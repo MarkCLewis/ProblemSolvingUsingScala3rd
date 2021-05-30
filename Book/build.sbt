@@ -1,4 +1,4 @@
-val scala3Version = "3.0.0-RC1"
+val scala3Version = "3.0.0"
 
 lazy val root = project
   .in(file("."))
@@ -7,8 +7,11 @@ lazy val root = project
     version := "0.1.0",
 
     scalaVersion := scala3Version,
-//		scalacOptions ++= Seq("-source future"),
-		scalacOptions ++= Seq("-Yexplicit-nulls", "-Ycheck-init"),
+		scalacOptions ++= Seq("-source:future"),
+		scalacOptions ++= Seq("-Yexplicit-nulls", "-language:noAutoTupling"),
 
-    libraryDependencies += "com.novocode" % "junit-interface" % "0.11" % "test"
+    libraryDependencies ++= Seq(
+        "com.novocode" % "junit-interface" % "0.11" % "test",
+        "org.scalafx" %% "scalafx" % "16.0.0-R24"
+    )
   )
